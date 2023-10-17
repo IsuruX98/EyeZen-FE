@@ -1,0 +1,29 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+section {
+  padding: 50px 0px;
+}
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #0b2727;
+}
+@media (max-width: 768px) {
+  .flex-row {
+    flex-direction: column;
+  }
+  .gap-4 {
+    gap: 3rem;
+  }
+}
