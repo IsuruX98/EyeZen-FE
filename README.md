@@ -21,6 +21,8 @@ EyeZen is a revolutionary eye care application designed to empower users with co
 
 - **Backend:** The backend of EyeZen is deployed on Render. You can interact with the backend services using this link: [EyeZen Backend](https://eyezen.onrender.com)
 
+- **Backend repo:** Visit the backend git repository - [EyeZen Backend Repo](https://github.com/IsuruX98/EyeZen-API)
+
 - **Image Storage:** Images used in EyeZen are stored securely in Cloudinary, ensuring fast loading times and high-quality visuals.
 
 ## Contributors
