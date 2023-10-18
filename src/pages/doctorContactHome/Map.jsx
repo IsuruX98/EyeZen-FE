@@ -6,7 +6,7 @@ import {
   Marker,
   InfoWindow,
 } from "@react-google-maps/api";
-import Axios from "axios";
+import Axios from "../../apis/axios";
 
 const containerStyle = {
   width: "100%",
@@ -27,7 +27,7 @@ const Map = () => {
 
   useEffect(() => {
     // Make an HTTP GET request to fetch data from the backend
-    Axios.get("http://localhost:5000/api/doctors")
+    Axios.get("doctors")
       .then((response) => {
         setDoctorData(response.data); // Set the data received from the backend to state
         setIsLoading(false);

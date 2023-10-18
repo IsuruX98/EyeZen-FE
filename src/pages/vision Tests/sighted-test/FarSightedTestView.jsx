@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import axios from "../../../apis/axios";
 import SpeechRecognition, {
   useSpeechRecognition,
 } from "react-speech-recognition";
 import { useSpeechSynthesis } from "react-speech-kit";
-import Speaker from "../../../assets/sigthted-test/speaker1.png"
+import Speaker from "../../../assets/sigthted-test/speaker1.png";
 
 function VoiceToText() {
   const [words, setWords] = useState([]);
@@ -22,7 +22,7 @@ function VoiceToText() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/word")
+      .get("word")
       .then((res) => {
         setWords(res.data);
         setLoading(false);

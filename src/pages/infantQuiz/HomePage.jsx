@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import axios from "../../apis/axios";
 import babyVisionImage1 from "../../assets/infantVisionImg/baby-vision1.jpg";
 import babyVisionImage2 from "../../assets/infantVisionImg/baby-vision2.jpg";
 import babyVisionImage3 from "../../assets/infantVisionImg/baby-vision3.jpg";
@@ -49,7 +49,7 @@ const InfantQuizHome = () => {
   useEffect(() => {
     // Fetch all facts from the backend
     axios
-      .get("http://localhost:5000/api/infantFact")
+      .get("infantFact")
       .then((response) => {
         setFacts(response.data);
       })
@@ -134,28 +134,27 @@ const InfantQuizHome = () => {
                 </div>
                 {/* Image on the right */}
                 <div className="w-1/2 p-4">
-                {fact.imageURL ? (
-  <img
-    src={fact.imageURL}
-    alt={fact.title}
-    style={{
-      height: "200px",
-      width: "100%",
-      maxWidth: "400px",
-    }}
-  />
-) : (
-  <img
-    src={babyVisionImage1}
-    alt={fact.title}
-    style={{
-      height: "200px",
-      width: "100%",
-      maxWidth: "400px",
-    }}
-  />
-)}
-
+                  {fact.imageURL ? (
+                    <img
+                      src={fact.imageURL}
+                      alt={fact.title}
+                      style={{
+                        height: "200px",
+                        width: "100%",
+                        maxWidth: "400px",
+                      }}
+                    />
+                  ) : (
+                    <img
+                      src={babyVisionImage1}
+                      alt={fact.title}
+                      style={{
+                        height: "200px",
+                        width: "100%",
+                        maxWidth: "400px",
+                      }}
+                    />
+                  )}
                 </div>
               </div>
             ))}

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Axios from "axios";
+import AxiosAPI from "../../apis/axios";
 import axios from "axios";
 import Swal from "sweetalert2";
 import Spinner from "../../components/Loader";
@@ -23,7 +23,7 @@ const UpdateTreatment = () => {
   };
 
   useEffect(() => {
-    Axios.get(`http://localhost:5000/api/treatments/${id}`)
+    AxiosAPI.get(`treatments/${id}`)
       .then((response) => {
         setTreatment(response.data);
       })
@@ -111,10 +111,7 @@ const UpdateTreatment = () => {
     try {
       setLoading(true);
 
-      const response = await axios.put(
-        `http://localhost:5000/api/treatments/${id}`,
-        treatmentInfo
-      );
+      const response = await AxiosAPI.put(`treatments/${id}`, treatmentInfo);
 
       Swal.fire({
         icon: "success",

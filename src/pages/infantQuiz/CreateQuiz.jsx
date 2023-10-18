@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+import axios from "../../apis/axios";
 import Swal from "sweetalert2";
 
 const CreateQuizQuestion = () => {
@@ -52,13 +52,10 @@ const CreateQuizQuestion = () => {
     }
 
     try {
-      const response = await axios.post(
-        "http://localhost:5000/api/infantQuiz",
-        {
-          question: question,
-          answers: answers,
-        }
-      );
+      const response = await axios.post("infantQuiz", {
+        question: question,
+        answers: answers,
+      });
 
       if (response.data.status === "ok") {
         // Quiz question successfully created
@@ -74,7 +71,7 @@ const CreateQuizQuestion = () => {
           icon: "success",
         }).then((result) => {
           if (result.isConfirmed) {
-            window.location.href = '/infant_view_quiz';
+            window.location.href = "/infant_view_quiz";
           }
         });
       } else {

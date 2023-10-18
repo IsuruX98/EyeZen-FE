@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Axios from "axios";
+import Axios from "../../apis/axios";
 
 const AyurvedicVideo = () => {
   const { videoId } = useParams();
@@ -10,7 +10,7 @@ const AyurvedicVideo = () => {
 
   useEffect(() => {
     // Make an HTTP GET request to fetch data from the backend
-    Axios.get("http://localhost:5000/api/videoTutorial")
+    Axios.get("videoTutorial")
       .then((response) => {
         setVideoData(response.data); // Set the data received from the backend to state
       })

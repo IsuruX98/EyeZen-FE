@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Axios from "axios";
+import AxiosAPI from "../../apis/axios";
 import axios from "axios";
 import Swal from "sweetalert2";
 import Spinner from "../../components/Loader";
@@ -10,7 +10,7 @@ const UpdateDoctor = () => {
   const [doctor, setDoctor] = useState(null);
 
   useEffect(() => {
-    Axios.get(`http://localhost:5000/api/doctors/${email}`)
+    AxiosAPI.get(`doctors/${email}`)
       .then((response) => {
         setDoctor(response.data);
       })
@@ -103,10 +103,7 @@ const UpdateDoctor = () => {
     try {
       setLoading2(true);
 
-      const response = await axios.put(
-        `http://localhost:5000/api/doctors`,
-        doctorInfo
-      );
+      const response = await AxiosAPI.put(`doctors`, doctorInfo);
 
       console.log("Backend response:", response.data);
 

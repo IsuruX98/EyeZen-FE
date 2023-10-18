@@ -4,7 +4,7 @@ import Questions from "./Questions";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
-import axios from "axios";
+import axios from "../../apis/axios";
 import Loader from "../../components/Loader";
 
 const QuizPage = () => {
@@ -18,7 +18,7 @@ const QuizPage = () => {
   useEffect(() => {
     const getAllQuiz = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/mainQuiz");
+        const response = await axios.get("mainQuiz");
         setAllQuestions(response.data);
         setIsLoading(false);
       } catch (err) {

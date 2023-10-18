@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import Axios from "axios";
+import Axios from "../../apis/axios";
 import Swal from "sweetalert2";
 
 const AdminDoctorList = () => {
@@ -13,7 +13,7 @@ const AdminDoctorList = () => {
   const [selectedType, setSelectedType] = useState("All Types");
 
   useEffect(() => {
-    Axios.get("http://localhost:5000/api/doctors")
+    Axios.get("doctors")
       .then((response) => {
         setDoctorData(response.data);
       })
@@ -34,7 +34,7 @@ const AdminDoctorList = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         // User clicked the "Yes" button, proceed with deletion
-        Axios.delete(`http://localhost:5000/api/doctors/${email}`)
+        Axios.delete(`doctors/${email}`)
           .then((response) => {
             setDoctorData((prevData) =>
               prevData.filter((doctor) => doctor.email !== email)

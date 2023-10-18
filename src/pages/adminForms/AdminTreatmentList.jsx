@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Axios from "axios";
+import Axios from "../../apis/axios";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 
@@ -8,7 +8,7 @@ const AdminTreatmentList = () => {
   const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
-    Axios.get("http://localhost:5000/api/treatments")
+    Axios.get("treatments")
       .then((response) => {
         setTreatmentData(response.data);
       })
@@ -29,7 +29,7 @@ const AdminTreatmentList = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         // User clicked the "Yes" button, proceed with deletion
-        Axios.delete(`http://localhost:5000/api/treatments/${id}`)
+        Axios.delete(`treatments/${id}`)
           .then(() => {
             setTreatmentData((prevData) =>
               prevData.filter((treatment) => treatment._id !== id)

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 import Spinner from "../../components/Loader";
+import axiosAPI from "../../apis/axios";
 
 const TreatmentForm = () => {
   const [loading, setLoading] = useState(false);
@@ -77,10 +78,7 @@ const TreatmentForm = () => {
     try {
       setLoading(true);
 
-      const response = await axios.post(
-        "http://localhost:5000/api/treatments",
-        updatedTreatmentInfo
-      );
+      const response = await axiosAPI.post("treatments", updatedTreatmentInfo);
 
       // Handle the response from the backend
       console.log("Backend response:", response.data);

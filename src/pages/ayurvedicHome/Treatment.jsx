@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Axios from "axios";
+import Axios from "../../apis/axios";
 
 const Treatment = () => {
   const { id } = useParams();
@@ -10,7 +10,7 @@ const Treatment = () => {
 
   useEffect(() => {
     // Make an HTTP GET request to fetch data from the backend
-    Axios.get("http://localhost:5000/api/treatments")
+    Axios.get("treatments")
       .then((response) => {
         setTreatmentsData(response.data); // Set the data received from the backend to state
       })

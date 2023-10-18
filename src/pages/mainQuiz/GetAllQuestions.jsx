@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import axios from "../../apis/axios";
 import Table from "../../components/Table";
 import Loader from "../../components/Loader";
 import Button from "../../components/Button";
@@ -14,7 +14,7 @@ const GetAllQuestions = () => {
   useEffect(() => {
     const getAllData = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/mainQuiz");
+        const response = await axios.get("mainQuiz");
         setQuestions(response.data);
         setDeleted(false);
         setIsLoading(false);

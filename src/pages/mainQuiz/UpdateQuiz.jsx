@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Swal from "sweetalert2";
-import axios from "axios";
+import axios from "../../apis/axios";
 import { useNavigate, useParams } from "react-router";
 import Loader from "../../components/Loader";
 
@@ -22,9 +22,7 @@ const UpdateQuiz = () => {
   useEffect(() => {
     const getQ = async () => {
       try {
-        const respons = await axios.get(
-          `http://localhost:5000/api/mainQuiz/${id}`
-        );
+        const respons = await axios.get(`mainQuiz/${id}`);
         setFormData(respons.data.data.updatedQ);
         setIsLoading(false);
       } catch (err) {
@@ -71,10 +69,7 @@ const UpdateQuiz = () => {
       });
 
       if (result.isConfirmed) {
-        const response = await axios.patch(
-          `http://localhost:5000/api/mainQuiz/${id}`,
-          formData
-        );
+        const response = await axios.patch(`mainQuiz/${id}`, formData);
         Swal.fire(response.data.message, "", "success");
         navigate("/view-all-questions");
       } else {

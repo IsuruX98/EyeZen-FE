@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import Axios from "../../apis/axios";
 import Swal from "sweetalert2";
 import Spinner from "../../components/Loader";
 
@@ -148,10 +149,7 @@ const DoctorForm = () => {
     try {
       setLoading2(true);
 
-      const response = await axios.post(
-        "http://localhost:5000/api/doctors",
-        updatedDoctorInfo
-      );
+      const response = await Axios.post("doctors", updatedDoctorInfo);
 
       // Handle the response from the backend
       console.log("Backend response:", response.data);

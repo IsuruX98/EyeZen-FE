@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Axios from "axios";
+import Axios from "../../apis/axios";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 
@@ -8,7 +8,7 @@ const AdminVideoTutorialList = () => {
   const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
-    Axios.get("http://localhost:5000/api/videoTutorial")
+    Axios.get("videoTutorial")
       .then((response) => {
         setVideoTutorials(response.data);
       })
@@ -28,7 +28,7 @@ const AdminVideoTutorialList = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        Axios.delete(`http://localhost:5000/api/videoTutorial/${id}`)
+        Axios.delete(`videoTutorial/${id}`)
           .then(() => {
             setVideoTutorials((prevData) =>
               prevData.filter((videoTutorial) => videoTutorial._id !== id)

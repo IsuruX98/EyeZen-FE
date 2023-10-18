@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import axios from "../../apis/axios";
 import result from "../../assets/infantVisionImg/result.jpg";
 import jsPDF from "jspdf";
 
@@ -12,7 +12,7 @@ const Questionnaire = () => {
 
   useEffect(() => {
     // Fetch quiz questions from the backend when the component mounts
-    axios.get("http://localhost:5000/api/infantQuiz").then((response) => {
+    axios.get("infantQuiz").then((response) => {
       if (response.data && response.data.length > 0) {
         // Combine all questions into a single array
         const combinedQuestions = response.data.reduce(
@@ -53,15 +53,13 @@ const Questionnaire = () => {
   const handleSubmitAnswers = () => {
     console.log(userAnswers);
     // Send userAnswers to the backend for scoring
-    axios
-      .post("http://localhost:5000/api/infantQuiz/check", { userAnswers })
-      .then((response) => {
-        setScore(response.data.score);
-        // Calculate the percentage here
-        const calculatedPercentage =
-          (response.data.score / questions.length) * 100;
-        setPercentage(calculatedPercentage);
-      });
+    axios.post("infantQuiz/check", { userAnswers }).then((response) => {
+      setScore(response.data.score);
+      // Calculate the percentage here
+      const calculatedPercentage =
+        (response.data.score / questions.length) * 100;
+      setPercentage(calculatedPercentage);
+    });
   };
 
   const handleButtonClick = () => {
@@ -110,7 +108,7 @@ const Questionnaire = () => {
     if (percentage < 50) {
       doc.text("Vision seems to be poor", 20, 70);
       doc.text("Highly recommended to meet an ophthalmologist", 20, 80);
-    }else if (percentage < 75) {
+    } else if (percentage < 75) {
       doc.text("Vision seems to be a bit weak", 20, 70);
       doc.text("Recommendation: Meet an ophthalmologist", 20, 80);
     } else {
@@ -186,22 +184,20 @@ const Questionnaire = () => {
               </h2>
               <h3 className="text-xl text-bold mb-3">Vision Condition</h3>
               <ul className="list-disc">
-              {percentage < 50 && (
-                <>
-                  <li>Vision seems to be poor</li>
-                  <li>Highly recommended to meet an ophthalmologist</li>
-                </>
-              )}
-              {percentage >= 50 && percentage < 75 && (
-                <>
-                  <li>Vision seems to be a bit weak</li>
-                  <li>Recommendation: Meet an ophthalmologist</li>
-                </>
-              )}
-              {percentage >= 75 && (
-                <li>Vision seems to be good</li>
-              )}
-            </ul>
+                {percentage < 50 && (
+                  <>
+                    <li>Vision seems to be poor</li>
+                    <li>Highly recommended to meet an ophthalmologist</li>
+                  </>
+                )}
+                {percentage >= 50 && percentage < 75 && (
+                  <>
+                    <li>Vision seems to be a bit weak</li>
+                    <li>Recommendation: Meet an ophthalmologist</li>
+                  </>
+                )}
+                {percentage >= 75 && <li>Vision seems to be good</li>}
+              </ul>
             </div>
             <div>
               <img src={result} alt="Result" className="w-full rounded-3xl" />

@@ -2,7 +2,7 @@ import React from "react";
 import { Form, Input, Select } from "antd";
 import { Link, useNavigate } from "react-router-dom";
 import hero from "../assets/main/home.png";
-import axios from "axios";
+import axios from "../apis/axios";
 import Swal from "sweetalert2";
 
 const { Option } = Select;
@@ -21,15 +21,12 @@ const Register = () => {
       });
 
       if (result.isConfirmed) {
-        const res = await axios.post(
-          "http://localhost:5000/api/auth/register",
-          {
-            name: values.name,
-            email: values.email,
-            mobile: values.phone,
-            password: values.password,
-          }
-        );
+        const res = await axios.post("auth/register", {
+          name: values.name,
+          email: values.email,
+          mobile: values.phone,
+          password: values.password,
+        });
         Swal.fire(
           "Congratulations! You Have Successfully Registered with EyeZen",
           "",

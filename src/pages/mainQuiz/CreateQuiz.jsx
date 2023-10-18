@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import Swal from "sweetalert2";
-import axios from "axios";
+import axios from "../../apis/axios";
 
 const CreateQuiz = () => {
   const navigate = useNavigate();
@@ -44,15 +44,12 @@ const CreateQuiz = () => {
       });
 
       if (result.isConfirmed) {
-        const response = await axios.post(
-          "http://localhost:5000/api/mainQuiz",
-          {
-            questions,
-            options: newOptions,
-            answer,
-            disease,
-          }
-        );
+        const response = await axios.post("mainQuiz", {
+          questions,
+          options: newOptions,
+          answer,
+          disease,
+        });
         Swal.fire(response.data.message, "", "success");
         navigate("/view-all-questions");
       } else {

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import DoctorLocationModal from "./DoctorPin";
-import Axios from "axios";
+import Axios from "../../apis/axios";
 
 const DoctorDetails = () => {
   // Extract the email parameter from the URL
@@ -14,7 +14,7 @@ const DoctorDetails = () => {
 
   useEffect(() => {
     // Make an HTTP GET request to fetch data from the backend
-    Axios.get("http://localhost:5000/api/doctors")
+    Axios.get("doctors")
       .then((response) => {
         setDoctorData(response.data); // Set the data received from the backend to state
       })

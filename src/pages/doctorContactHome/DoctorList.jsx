@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import Axios from "axios";
+import Axios from "../../apis/axios";
 import Loader from "../../components/Loader";
 
 const DoctorList = () => {
@@ -15,7 +15,7 @@ const DoctorList = () => {
 
   useEffect(() => {
     // Make an HTTP GET request to fetch data from the backend
-    Axios.get("http://localhost:5000/api/doctors")
+    Axios.get("doctors")
       .then((response) => {
         setDoctorData(response.data); // Set the data received from the backend to state
         setIsLoading(false);

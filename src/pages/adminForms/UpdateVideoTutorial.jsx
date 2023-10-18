@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Axios from "axios";
+import AxiosAPI from "../../apis/axios";
 import axios from "axios";
 import Swal from "sweetalert2";
 import Spinner from "../../components/Loader";
@@ -23,7 +23,7 @@ const UpdateVideoTutorial = () => {
   };
 
   useEffect(() => {
-    Axios.get(`http://localhost:5000/api/videoTutorial/${id}`)
+    AxiosAPI.get(`videoTutorial/${id}`)
       .then((response) => {
         setVideoTutorial(response.data);
       })
@@ -142,8 +142,8 @@ const UpdateVideoTutorial = () => {
     try {
       setLoading(true);
 
-      const response = await axios.put(
-        `http://localhost:5000/api/videoTutorial/${id}`,
+      const response = await AxiosAPI.put(
+        `videoTutorial/${id}`,
         videoTutorialInfo
       );
 

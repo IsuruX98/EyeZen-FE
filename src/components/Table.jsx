@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Swal from "sweetalert2";
-import axios from "axios";
+import axios from "../apis/axios";
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 import { initTE, Ripple } from "tw-elements";
@@ -23,7 +23,7 @@ const Table = (props) => {
     //check the button confirmation
     if (confirmResult.isConfirmed) {
       try {
-        await axios.delete(`http://localhost:5000/api/mainQuiz/${id}`);
+        await axios.delete(`mainQuiz/${id}`);
         Swal.fire("Question Deleted!", "", "success");
         props.onDelete(id);
       } catch (err) {

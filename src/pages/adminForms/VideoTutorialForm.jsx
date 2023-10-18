@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import AxiosAPI from "../../apis/axios";
 import Swal from "sweetalert2";
 import Spinner from "../../components/Loader";
 
@@ -113,8 +114,8 @@ const VideoTutorialForm = () => {
     try {
       setLoading(true);
 
-      const response = await axios.post(
-        "http://localhost:5000/api/videoTutorial",
+      const response = await AxiosAPI.post(
+        "videoTutorial",
         updatedVideoTutorialInfo
       );
 

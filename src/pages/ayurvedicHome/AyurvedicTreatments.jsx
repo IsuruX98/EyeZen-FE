@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import Axios from "axios";
+import Axios from "../../apis/axios";
 
 const AyurvedicTreatments = () => {
   // State for search query and filter
@@ -12,7 +12,7 @@ const AyurvedicTreatments = () => {
 
   useEffect(() => {
     // Make an HTTP GET request to fetch data from the backend
-    Axios.get("http://localhost:5000/api/treatments")
+    Axios.get("treatments")
       .then((response) => {
         setTreatmentsData(response.data); // Set the data received from the backend to state
       })
