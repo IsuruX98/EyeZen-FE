@@ -34,3 +34,7 @@ EyeZen is the result of collaborative efforts from a team of passionate individu
 
 ## Screenshots
 
+![IMG_8435](https://github.com/IsuruX98/EyeZen-FE/assets/104721314/885d94b4-1129-40c5-9cdf-04d1174872df)
+
+![IMG_8436](https://github.com/IsuruX98/EyeZen-FE/assets/104721314/c3368661-b23e-4575-969c-50439ac975e2)
+
