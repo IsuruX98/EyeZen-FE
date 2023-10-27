@@ -72,7 +72,8 @@ const Navbar = () => {
     location.pathname === "/near-sighted" ||
     location.pathname === "/test-view" ||
     location.pathname === "/test-inst" ||
-    location.pathname === "/near-test-view"
+    location.pathname === "/near-test-view" ||
+    location.pathname === "/near-sighted-result"
   ) {
     return null;
   }
