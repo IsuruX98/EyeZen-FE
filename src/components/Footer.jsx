@@ -5,14 +5,28 @@ import {
   FaInstagramSquare,
   FaTwitterSquare,
 } from "react-icons/fa";
+import { useLocation } from "react-router-dom";
 
 const Footer = () => {
+  const location = useLocation();
+
+  if (
+    location.pathname === "/near-sighted" ||
+    location.pathname === "/test-view" ||
+    location.pathname === "/test-inst"
+  ) {
+    return null;
+  }
+
   return (
     <div className="w-full bg-black py-16 px-10 grid md:grid-cols-2 gap-8 text-gray-300 bottom-0 m-0">
       <div className="">
         <h3 className="text-2xl font-bold text-[#41A4FF]">EyeZen</h3>
         <p className="py-4">
-          We are EyeZen, your go-to destination for hassle-free eye care. Our team of professionals is dedicated to making your vision a priority. Simple, accessible, and tailored just for you. Welcome to a brighter world with EyeZen
+          We are EyeZen, your go-to destination for hassle-free eye care. Our
+          team of professionals is dedicated to making your vision a priority.
+          Simple, accessible, and tailored just for you. Welcome to a brighter
+          world with EyeZen
         </p>
         <div className="flex justify-start gap-10 md:w-[75%] my-6">
           <FaWhatsappSquare size={30} />
